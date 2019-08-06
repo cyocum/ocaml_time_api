@@ -18,7 +18,8 @@ let epoch_time_of_string epoch_time =
   let (_, tm) = Unix.mktime localtm in
   json_of_tm tm
 
-let print_time_formatted = Opium.Std.get "/time/:seconds_since_epoch" (fun req ->                                                            `Json (epoch_time_of_string ((Opium.Std.param req "seconds_since_epoch") |> float_of_string_opt)) |> Opium.Std.respond'
+let print_time_formatted = Opium.Std.get "/time/:seconds_since_epoch" (fun req ->
+                               `Json (epoch_time_of_string ((Opium.Std.param req "seconds_since_epoch") |> float_of_string_opt)) |> Opium.Std.respond'
                              )
 
 let _ =
